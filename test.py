@@ -10,9 +10,13 @@ def download(url):
     r = requests.get(url)
     f = HTMLFilter()
     f.feed(r.text)
-    print(f.text.replace('\n',''))
+    data = f.text
+    data = data.replace('\n','')
+    a = data.index('document.write(YYsT111);')
+    b = data.index('document.write(f00yBelow01);')
+    print(data[a:b])
     print()
 
-download('https://mojim.com/twy100111x105x1.htm')
-download('https://mojim.com/twy100111x105x2.htm')
-download('https://mojim.com/twy100111x105x3.htm')
+for i in range(1,10):
+    print(f'i = {i}')
+    download(f'https://mojim.com/twy100111x105x{i}.htm')
